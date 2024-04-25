@@ -11,6 +11,9 @@ const userSchema = mongoose.Schema({
     desc: {
         type: String
     },
+    password: {
+        type: String
+    },
     joinedOn: {
         type: Date,
         default: Date.now

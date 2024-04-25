@@ -10,16 +10,13 @@ const auth = async (req, res, next) => {
             throw new Error('Authorization token not found');
         }
 
-        // let decodeData = jwt.verify(token, process.env.JWT_SECRET)
         let decodeData;
         try {
             decodeData = jwt.verify(token, process.env.JWT_SECRET);
         } catch (error) {
             if (error.name === 'TokenExpiredError') {
-                // Handle expired token error
                 return res.status(401).json({ message: 'Token expired. Please log in again.' });
             } else {
-                // Handle other JWT errors
                 throw error;
             }
         }

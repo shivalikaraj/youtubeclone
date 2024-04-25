@@ -32,6 +32,7 @@ export const signup = async( req, res ) => {
 
 export const signin = async (req, res ) => {
     const {email, password} = req.body;
+    console.log(req.body);
 
     try {
         const user = await users.findOne({email});
@@ -70,7 +71,7 @@ export const signin = async (req, res ) => {
 export const login = async( req,res)=>{
 
     const {email} = req.body;
-    console.log(email)
+    // console.log(email)
     try {
         const existingUser = await users.findOne({email})
         if (!existingUser) {
@@ -102,5 +103,5 @@ export const login = async( req,res)=>{
 
         res.status(500).json({message: "Something went wrong..."})
     }
-
 }
+
