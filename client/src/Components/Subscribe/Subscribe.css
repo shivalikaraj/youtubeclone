@@ -1,0 +1,20 @@
+.subscribe {
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 50px;
+    height: 3.3rem;
+    width: 8rem;
+    border: none;
+    font-weight: 700;
+    font-size: 15px;
+    position: relative;
+    right: 15px;
+    top: 15px;
+}
+
+.subscribe:hover,
+.subscribe:active {
+        color: white;
+        border:1px solid white;
+        background-color: transparent;
+}
