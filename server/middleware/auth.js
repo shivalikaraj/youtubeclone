@@ -15,7 +15,7 @@ const auth = async (req, res, next) => {
             decodeData = jwt.verify(token, process.env.JWT_SECRET);
         } catch (error) {
             if (error.name === 'TokenExpiredError') {
-                return res.status(401).json({ message: 'Token expired. Please log in again.' });
+                return res.status(401).json({ message: 'Token expired. Please sign in again.' });
             } else {
                 throw error;
             }
@@ -34,11 +34,11 @@ const auth = async (req, res, next) => {
             return res.status(401).json({ message: "User is blocked. Try again later." });
         }
 
-        if (user.failedAttempts >= 5) {
+        if (user.failedAttempts >= 4) {
             
             const updatedUser = await users.findByIdAndUpdate(user._id, { $inc: { failedAttempts: 1 } }, { new: true });
             
-            if (updatedUser.failedAttempts > 4) {
+            if (updatedUser.failedAttempts >= 4) {
                 const oneHourLater = new Date(Date.now() + 60 * 60 * 1000); // One hour from now
                 await users.findByIdAndUpdate(updatedUser._id, { blockedUntil: oneHourLater });
 
