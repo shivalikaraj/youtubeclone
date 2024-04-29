@@ -38,7 +38,7 @@ const auth = async (req, res, next) => {
             
             const updatedUser = await users.findByIdAndUpdate(user._id, { $inc: { failedAttempts: 1 } }, { new: true });
             
-            if (updatedUser.failedAttempts >= 5) {
+            if (updatedUser.failedAttempts > 4) {
                 const oneHourLater = new Date(Date.now() + 60 * 60 * 1000); // One hour from now
                 await users.findByIdAndUpdate(updatedUser._id, { blockedUntil: oneHourLater });
 

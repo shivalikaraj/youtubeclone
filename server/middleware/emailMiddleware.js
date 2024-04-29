@@ -4,7 +4,7 @@ export const emailMiddleware = async (req, res, next) => {
     
     try {
         const failedAttempts = req.user.failedAttempts
-        const threshold = 3
+        const threshold = 2
 
         if(failedAttempts === threshold) {
            const recipient = req.user.email;
