@@ -1,1 +1,1 @@
-https://you-tube-clone-sr.netlify.app
+https://sr-youtubeclone.netlify.app/
